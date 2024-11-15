@@ -1,0 +1,239 @@
+let menuIsEnable = 0;
+let showMenuButton = document.querySelector('.navigate');
+let header = document.querySelector('.header');
+let isScrolled = 0;
+let KOCMOCLetterSpacing = header.childNodes[5].style.letterSpacing;
+
+//вступление
+function setHeaderHeight() {
+    if (isScrolled == 0 && window.pageYOffset > 10) {
+        window.scrollTo(0,2);
+        
+        header.style.transition = 'box-shadow 1s, height 2s';
+        header.style.height = '150px';
+        header.style.boxShadow = '0px -50px 40px -15px black inset';
+        
+        header.childNodes[1].style.background = 'rgba(0,0,0,.3)';
+        
+        header.childNodes[5].style.transition = 'letter-spacing 2s';
+        header.childNodes[5].style.letterSpacing = 0;
+        
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(function() {
+            document.body.style.overflow = '';
+            isScrolled = 1;
+            header.childNodes[3].style.visibility = 'visible';
+        }, 2000);
+    }
+    else if (isScrolled == 1 && window.pageYOffset <= 1) {
+        window.scrollTo(0,0);
+        
+        header.style.height = '100%';
+        header.style.transition = 'box-shadow 10s, height 2s';
+        header.style.boxShadow = '0px -50px 40px -15px rgba(0,0,0,0) inset';
+        
+        header.childNodes[3].style.visibility = 'hidden';
+        
+        header.childNodes[1].style.background = 'rgba(0,0,0,.8)';
+        
+        header.childNodes[5].style.transition = 'letter-spacing 5s';
+        header.childNodes[5].style.letterSpacing = KOCMOCLetterSpacing;
+        
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(function() {
+            document.body.style.overflow = '';
+            isScrolled = 0;
+        }, 2000);
+    }
+}
+
+document.onscroll = function showButton() {
+    setHeaderHeight();
+    let upButton = document.querySelector('.up');
+    
+    if (window.pageYOffset >= 200 && menuIsEnable == 0) {
+        upButton.style.visibility = 'visible';
+        upButton.style.background = 'rgba(81,81,81,0.2)';
+        upButton.childNodes[1].style.fill = 'rgba(255,255,255,0.5)';
+    }
+    else {
+        upButton.style.visibility = 'hidden';
+        upButton.style.background = 'rgba(81,81,81,0)';
+        upButton.childNodes[1].style.fill = 'rgba(255,255,255,0)';
+    }
+}
+
+function goTo() {
+    let scroll = setInterval(function() {
+        if (window.pageYOffset > 10) {
+            window.scrollBy(0, -10);
+        }
+        else {
+            clearInterval(scroll);
+        }
+    }, 10);
+}
+
+showMenuButton.onclick = function showMenu() {
+    let menu = document.querySelector('.menu');
+    
+    if (menuIsEnable == 0) {
+        document.body.style.overflow = 'hidden';
+        menu.style.visibility = 'visible';
+        menu.style.background = 'black';
+        header.style.height = '100%';
+        
+        //текст
+        header.childNodes[5].style.transition = 'color 2s';
+        header.childNodes[5].style.color = 'rgba(0,0,0,0)';
+        
+        showPlanets();
+        menuIsEnable = 1;
+    }
+    else {
+        document.body.style.overflow = ''; 
+        menu.style.visibility = 'hidden';
+        menu.style.background = 'rgba(0,0,0,0)';
+        header.style.height = '150px';
+        
+        //текст
+        header.childNodes[5].style.transition = 'color 2s';
+        header.childNodes[5].style.color = 'white';
+        
+        hidePlanets();
+        
+        menuIsEnable = 0;
+    }
+}
+
+//Функции с планетами
+let planets = {
+    sun: document.querySelector('#sun'),
+    mercury: document.querySelector('#mercury'),
+    venus: document.querySelector('#venus'),
+    earth: document.querySelector('#earth'),
+    mars: document.querySelector('#mars'),
+    jupiter: document.querySelector('#jupiter'),
+    saturn: document.querySelector('#saturn'),
+    uranus: document.querySelector('#uranus'),
+    neptune: document.querySelector('#neptune'),
+}
+let coordsPlanets = {
+    mercury: mercury.style.transform = 'rotate',
+    venus: venus.style.transform = 'rotate',
+    earth: earth.style.transform = 'rotate',
+    mars: mars.style.transform = 'rotate',
+    jupiter: jupiter.style.transform = 'rotate',
+    saturn: saturn.style.transform = 'rotate',
+    uranus: uranus.style.transform = 'rotate',
+    neptune: neptune.style.transform = 'rotate', 
+}
+
+function rotatePlanets() {
+    planets.mercury.style.transform = 'rotate(360deg)';
+    setInterval(function() {
+        console.log(getComputedStyle(planets.mercury));  
+    }, 3000);
+    planets.venus.style.transform = 'rotate(360deg)';
+    planets.earth.style.transform = 'rotate(360deg)';
+    planets.mars.style.transform = 'rotate(360deg)';
+    planets.jupiter.style.transform = 'rotate(360deg)';
+    planets.saturn.style.transform = 'rotate(360deg)';
+    planets.uranus.style.transform = 'rotate(360deg)';
+    planets.neptune.style.transform = 'rotate(360deg)';
+}
+
+function showPlanets() {
+    let switchPlanet = 0;
+    rotatePlanets();
+    let showPlanets = setInterval(function() {
+        switch(switchPlanet) {
+            case 0:
+                planets.sun.style.visibility = 'visible';
+                switchPlanet = 1;
+                break;
+            case 1:
+                planets.mercury.style.visibility = 'visible';
+                switchPlanet = 2;
+                break;
+            case 2:
+                planets.venus.style.visibility = 'visible';
+                switchPlanet = 3;
+                break;
+            case 3:
+                planets.earth.style.visibility = 'visible';
+                switchPlanet = 4;
+                break;
+            case 4:
+                planets.mars.style.visibility = 'visible';
+                switchPlanet = 5;
+                break;
+            case 5:
+                planets.jupiter.style.visibility = 'visible';
+                switchPlanet = 6;
+                break;
+            case 6:
+                planets.saturn.style.visibility = 'visible';
+                switchPlanet = 7;
+                break;
+            case 7:
+                planets.uranus.style.visibility = 'visible';
+                switchPlanet = 8;
+                break;
+            case 8:
+                planets.neptune.style.visibility = 'visible';
+                switchPlanet = 0;
+                clearInterval(showPlanets);
+                break;
+        }
+    }, 500)
+    
+    setTimeout(showPlanets, 5000);
+}
+
+function hidePlanets() {
+    let switchPlanet = 0;
+    setInterval(function() {
+        switch(switchPlanet) {
+            case 0:
+                planets.neptune.style.visibility = 'hidden';
+                switchPlanet = 1;
+                break;
+            case 1:
+                planets.uranus.style.visibility = 'hidden';
+                switchPlanet = 2;
+                break;    
+            case 2:
+                planets.saturn.style.visibility = 'hidden';
+                switchPlanet = 3;
+                break;    
+            case 3:
+                planets.jupiter.style.visibility = 'hidden';
+                switchPlanet = 4;
+                break;    
+            case 4:
+                planets.mars.style.visibility = 'hidden';
+                switchPlanet = 5;
+                break;    
+            case 5:
+                planets.earth.style.visibility = 'hidden';
+                switchPlanet = 6;
+                break;    
+            case 6:
+                planets.venus.style.visibility = 'hidden';
+                switchPlanet = 7;
+                break;    
+            case 7:
+                planets.mercury.style.visibility = 'hidden';
+                switchPlanet = 8;
+                break;
+            case 8:
+                planets.sun.style.visibility = 'hidden';
+                switchPlanet = 0;
+                break;
+        }
+    }, 500)
+    
+}

@@ -1,0 +1,38 @@
+/*Текст*/
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-style: normal;
+  src: local("Montserrat"), url("Montserrat/Medium.ttf");
+}
+/*Курсив*/
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-style: italic;
+  src: local("Montserrat"), url("Montserrat/MediumItalic.ttf");
+}
+
+/*Заголовок 1*/
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 900;
+  font-style: normal;
+  src: local("Montserrat"), url("Montserrat/Black.ttf");
+}
+
+/*Заголовок 2*/
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-style: normal;
+  src: local("Montserrat"), url("Montserrat/Bold.ttf");
+}
+
+/*Заголовок 3*/
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-style: normal;
+  src: local("Montserrat"), url("Montserrat/SemiBold.ttf");
+}

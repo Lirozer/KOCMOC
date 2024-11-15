@@ -1,0 +1,229 @@
+@charset "utf-8";
+@import "null.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400&display=swap');
+/* CSS Document */
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+/*Полоса прокрутки*/
+::-webkit-scrollbar {
+    background: hsla(0,0%,0%,0.9);
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.7) inset;
+}
+::-webkit-scrollbar-thumb {
+    background: hsla(0,0%,45%,0.6);
+    border-radius: 20px; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: hsla(0,0%,30%,0.6);
+}
+/*Меню выбора планеты*/
+.menu {
+    visibility: hidden;
+    transition: all 2s;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    padding: 10%;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu img {
+    transition: all 2s;
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+}
+.menu div {
+    transition: all 2s;
+    width: 10%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Планеты*/
+#sun {
+    visibility: hidden;
+    width: 300%;
+}
+#mercury {
+    visibility: hidden;
+    width: calc(10% + 20%);
+    left: calc(-110% - 20%);
+    transform-origin: 600%;
+    transition: transform 3s linear;
+}
+#venus {
+    visibility: hidden;
+    width: calc(20% + 20%);
+    left: calc(-150% - 30%);
+    transform-origin: 570%;
+    transition: transform 5s linear;
+}
+#earth {
+    visibility: hidden;
+    width: calc(25% + 20%);
+    left: calc(-190% - 40%);
+    transform-origin: 620%;
+    transition: transform 6s linear;
+}
+#mars {
+    visibility: hidden;
+    width: calc(15% + 20%);
+    left: calc(-220% - 50%);
+    transform-origin: 920%;
+    transition: transform 7s linear;
+}
+#jupiter {
+    visibility: hidden;
+    width: calc(60% + 20%);
+    left: calc(-280% - 60%);
+    transform-origin: 490%;
+    transition: transform 14s linear;
+}
+#saturn {
+    visibility: hidden;
+    width: calc(80% + 20%);
+    left: calc(-350% - 70%);
+    transform-origin: 480%;
+    transition: transform 15s linear;
+}
+#uranus {
+    visibility: hidden;
+    width: calc(40% + 20%);
+    left: calc(-390% - 80%);
+    transform-origin: 890%;
+    transition: transform 2s;
+    transition: transform 18s linear;
+}
+#neptune {
+    visibility: hidden;
+    width: calc(32% + 20%);
+    left: calc(-430% - 90%);
+    transform-origin: 1120%;
+    transition: transform 20s linear;
+}
+
+/*Шапка*/
+.header {
+    width: 100%;
+    height: 100%;
+    background: hsla(232,71%,16%,1.00) url("https://images.wallpaperscraft.ru/image/single/planety_galaktika_zvezdy_146448_1920x1080.jpg") no-repeat center;
+    background-size: cover;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/*Затемнение*/
+.screen {
+    transition: background 1s;
+    background: rgba(0,0,0,.8);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+h1 {
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 50px;
+    font-weight: 900;
+    z-index: 3;
+}
+@media (max-width: 600px) {
+    h1 {
+        letter-spacing: 30px;
+    }
+}
+
+.navigate {
+    visibility: hidden;
+    position: absolute;
+    background: url("../images/deco/rocket.png") no-repeat;
+    background-size: cover;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+
+/*Кнопка Вверх*/
+.up {
+    visibility: hidden;
+    transition: all .35s;
+    background: rgba(81,81,81,0.2);
+    width: 50px;
+    top: 70%;
+    height: 50px;
+    left: 5%;
+    position: fixed;
+    z-index: 10;
+    cursor: pointer;
+    border-radius: 30%;
+}
+.up svg {
+    transition: all .35s;
+    position: absolute;
+    left: 5px;
+    top: 4px;
+    fill: rgba(255,255,255,0.5);
+}
+
+/*Контент*/
+main {
+    background: black;
+    background-size: cover;
+    padding: 20px calc(20% - 80px);
+}
+h2 {
+    font-size: 40px;
+    text-align: center;
+    padding-bottom: 40px;
+    line-height: 50px;
+    width: 100%;
+}
+p {
+    margin-bottom: 20px;
+    line-height: 20px;
+}
+ul {
+    list-style: initial;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+li {
+    padding-bottom: 10px;
+    margin-left: 30px;
+}
+img {
+    width: 100%;
+}
+
+/*Подвал*/
+footer {
+    background: gray;
+    height: 50px;
+}
+
+
+

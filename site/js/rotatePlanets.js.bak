@@ -1,0 +1,49 @@
+let planetATemplate = "<img src='$imgLink' id='$planetid' onclick='window.location.href=`$planet.html`'>"
+let orbitLayout = "<div id='$orbit' class='orbit'></div>"
+
+$(function() {
+    createPlanet('mercury', 3000, 30, -130, 600, 'images/info/planets/mercury.png');
+    createPlanet('venus', 5000, 40, -180, 570, 'images/info/planets/venus.png');
+    createPlanet('earth', 6000, 45, -230, 620, 'images/info/planets/earth.webp');
+    createPlanet('mars', 7000, 35, -270, 920, 'images/info/planets/mars.webp');
+    createPlanet('jupiter', 14000, 80, -340, 490, 'images/info/planets/jupiter.png');
+    createPlanet('saturn', 15000, 100, -420, 480, 'images/info/planets/saturn.png');
+    createPlanet('uranus', 18000, 60, -470, 890, 'images/info/planets/uranus.png');
+    createPlanet('neptune', 20000, 52, -520, 1120, 'images/info/planets/neptune.png');
+});
+
+function createPlanet(planet, time, width, left, transformOrigin, imageLink) {
+    $('.menu div').append(planetATemplate
+        .replace('$imgLink', imageLink)
+        .replace('$planetid', planet)
+        .replace('$planet', planet));
+    $('#' + planet).css({
+        width: width + '%',
+        left: left + '%',
+        transformOrigin: transformOrigin + '%',
+        transition: 'transform ' + time / 1000 + 's linear'
+    });
+    createOrbit(planet, left);
+    setTimeout(() => rotatePlanet(planet, time), 1);
+}
+function createOrbit(planet, orbitSize) {
+    $('.menu div').append(orbitLayout
+        .replace('$orbit', planet + 'orbit'));
+    $(planet + 'orbit').css({
+        padding: -orbitSize
+    })
+}
+
+function rotatePlanet(planet, time) {
+    let rotate = 180;
+    $('#' + planet).css({
+        transform: 'rotate(' + rotate + 'deg)'
+    });
+    rotate += 180;
+    setInterval(() => {
+        $('#' + planet).css({
+            transform: 'rotate(' + rotate + 'deg)'
+        });
+        rotate += 180;
+    }, time);
+}
