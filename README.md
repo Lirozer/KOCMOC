@@ -1,2 +1,6 @@
-## 🌐 Демо
-👉 [Посмотреть работающий сайт](https://lirozer.github.io/KOCMOC/)
+# KOCMOC
+
+Сайт для конкурса, создан в 2022
+Вдохновлен уровнем в geometry dash
+
+[Посмотреть работающий сайт](https://lirozer.github.io/KOCMOC/)
